@@ -1,0 +1,38 @@
+{
+  "name": "@railsmob/events",
+  "version": "0.1.0",
+  "description": "Simple and well-tested events",
+  "main": "index.js",
+  "author": "Ivan Zotov <me@ivanzotov.com> (http://ivanzotov.com/)",
+  "license": "MIT",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/railsmob/events.git"
+  },
+  "bugs": {
+    "url": "https://github.com/railsmob/events/issues"
+  },
+  "homepage": "https://github.com/railsmob/events",
+  "keywords": [
+    "events"
+  ],
+  "scripts": {
+    "test": "jest",
+    "debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
+    "format": "prettier --write '__tests__/**/*.js' 'src/**/*.js' 'index.js'"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "babel-jest": "^24.9.0",
+    "eslint": "^6.7.1",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
