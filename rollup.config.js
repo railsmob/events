@@ -4,11 +4,11 @@ module.exports = {
   input: 'index.js',
   output: {
     file: 'dist/index.js',
-    format: 'es'
+    format: 'cjs',
   },
   plugins: [
     babel({
-      exclude: 'node_modules/**'
-    })
-  ]
+      exclude: 'node_modules/**',
+    }),
+  ],
 };
