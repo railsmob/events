@@ -8,6 +8,11 @@ export default class Events {
     this.listeners = {};
   }
 
+  // aliases
+  id = Events.id;
+  SEP = Events.SEP;
+  ANY = Events.ANY;
+
   on = (eventId, fn) => {
     const [name, id] = this.parse(eventId);
     if (this.listeners[name] === undefined) this.listeners[name] = [];

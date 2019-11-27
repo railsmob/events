@@ -1,3 +1,4 @@
-import Events from './src/Events'
+import Events from './src/Events';
 
-export default new Events()
+export { Events };
+export default new Events();

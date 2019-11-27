@@ -141,6 +141,11 @@ describe('Events', () => {
   });
 
   describe('.emit', () => {
+    it('should return if no listener found', () => {
+      const events = new Events();
+      expect(events.emit('something')).toBeUndefined();
+    });
+
     it('should run all listeners with corresponding id', () => {
       const events = new Events();
 

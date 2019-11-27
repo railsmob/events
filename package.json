@@ -1,6 +1,6 @@
 {
   "name": "@railsmob/events",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Simple and well-tested events",
   "main": "index.js",
   "author": "Ivan Zotov <me@ivanzotov.com> (http://ivanzotov.com/)",
