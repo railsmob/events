@@ -20,8 +20,8 @@ export default class Events {
   };
 
   once = (eventId, fn) => {
-    const handler = () => {
-      fn();
+    const handler = args => {
+      fn(args);
       this.off(eventId, handler);
     };
     this.on(eventId, handler);
