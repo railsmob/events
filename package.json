@@ -1,6 +1,6 @@
 {
   "name": "@railsmob/events",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Simple and well-tested events",
   "main": "lib/index.js",
   "unpkg": "dist/index.js",
@@ -22,18 +22,17 @@
   ],
   "scripts": {
     "test": "jest",
-    "build": "rollup -c",
-    "tsc": "tsc -p .",
+    "build": "rollup -c && cp ./types/*.flow ./lib;",
+    "types": "tsc -p . && yarn run flowgen",
     "flow": "flow",
-    "flowgen": "flowgen types/* --add-flow-header -o flow-typed/npm/@railsmob/events_v0.x.x.js.flow",
+    "flowgen": "for file in $(find ./types -name *.d.ts -type f); do flowgen ${file} --add-flow-header -o ${file/.d.ts/.js.flow}; done;",
     "debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "format": "prettier --write \"{__tests__,src,types}/**/*.{js,ts}\" \"./*.{js,json}\""
   },
   "files": [
     "src",
     "dist",
-    "types",
-    "flow-typed"
+    "types"
   ],
   "dependencies": {},
   "devDependencies": {
