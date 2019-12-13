@@ -5,13 +5,6 @@
  */
 
 declare module "src/Events" {
-  /**
- * @typedef {(args: any) => any} ListenerFn
- * @typedef {{
-id: string,
-fn: ListenerFn,...
-}} Listener
- */
   declare export default class Events {
     static SEP: string;
     static ANY: string;
@@ -24,11 +17,18 @@ fn: ListenerFn,...
 
     /**
  * @type {{
-[name: string]: Array<Listener>,...
+[name: string]: Array<{
+id: string,
+fn: Function,...
+}>,...
 }}
  */
     listeners: {
-      [name: string]: Array<Listener>,
+      [name: string]: Array<{
+        id: string,
+        fn: Function,
+        ...
+      }>,
       ...
     };
     id: (name: string, id: string) => string;
@@ -37,21 +37,21 @@ fn: ListenerFn,...
 
     /**
      * @param {string} eventId
-     * @param {ListenerFn} fn
+     * @param {Function} fn
      */
-    on: (eventId: string, fn: (args: any) => any) => void;
+    on: (eventId: string, fn: Function) => void;
 
     /**
      * @param {string} eventId
-     * @param {ListenerFn} fn
+     * @param {Function} fn
      */
-    once: (eventId: string, fn: (args: any) => any) => void;
+    once: (eventId: string, fn: Function) => void;
 
     /**
      * @param {string} eventId
-     * @param {ListenerFn} fn
+     * @param {Function} fn
      */
-    off: (eventId: string, fn: (args: any) => any) => void;
+    off: (eventId: string, fn: Function) => void;
 
     /**
      * @param {string} eventId
@@ -64,12 +64,6 @@ fn: ListenerFn,...
      */
     parse: (eventId: string) => string[];
   }
-  declare export type ListenerFn = (args: any) => any;
-  declare export type Listener = {
-    id: string,
-    fn: (args: any) => any,
-    ...
-  };
 }
 
 declare module "index" {

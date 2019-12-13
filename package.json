@@ -1,12 +1,14 @@
 {
   "name": "@railsmob/events",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Simple and well-tested events",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
+  "unpkg": "dist/index.js",
+  "module": "es/index.js",
+  "types": "./typings/index.d.ts",
   "author": "Ivan Zotov <me@ivanzotov.com> (http://ivanzotov.com/)",
   "license": "MIT",
   "private": false,
-  "types": "./typings/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/railsmob/events.git"
@@ -23,10 +25,12 @@
     "build": "rollup -c",
     "tsc": "tsc -p .",
     "flow": "flow",
+    "flowgen": "flowgen typings/index.d.ts -o flow-typed/npm/@railsmob/events_v0.x.x.js.flow",
     "debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
-    "format": "prettier --write '__tests__/**/*.js' 'src/**/*.js' 'index.js'"
+    "format": "prettier --write \"{__tests__,src,typings}/**/*.{js,ts}\" \"./*.{js,json}\""
   },
   "files": [
+    "src",
     "dist",
     "typings",
     "flow-typed"
@@ -39,10 +43,12 @@
     "babel-jest": "^24.9.0",
     "eslint": "^6.7.1",
     "flow-bin": "^0.113.0",
+    "flowgen": "^1.10.0",
     "jest": "^24.9.0",
     "prettier": "^1.19.1",
     "rollup": "^1.27.5",
     "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-terser": "^5.1.3",
     "typescript": "^3.7.3"
   },
   "jest": {

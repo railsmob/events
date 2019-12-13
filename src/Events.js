@@ -1,8 +1,3 @@
-/**
- * @typedef {(args: any) => any} ListenerFn
- * @typedef {{ id: string, fn: ListenerFn }} Listener
- */
-
 export default class Events {
   static SEP = ':';
   static ANY = 'any';
@@ -11,10 +6,10 @@ export default class Events {
    * @param {string} name
    * @param {string} id
    */
-  static id = (name, id) => `${name}${Events.SEP}${id}`;
+  static id = (name, id) => name + Events.SEP + id;
 
   /**
-   * @type {{ [name: string]: Array<Listener> }}
+   * @type {{ [name: string]: Array<{ id: string, fn: Function }> }}
    */
   listeners = {};
 
@@ -25,7 +20,7 @@ export default class Events {
 
   /**
    * @param {string} eventId
-   * @param {ListenerFn} fn
+   * @param {Function} fn
    */
   on = (eventId, fn) => {
     const [name, id] = this.parse(eventId);
@@ -35,11 +30,11 @@ export default class Events {
 
   /**
    * @param {string} eventId
-   * @param {ListenerFn} fn
+   * @param {Function} fn
    */
   once = (eventId, fn) => {
     /**
-     * @type {ListenerFn}
+     * @type {(args: any) => any}
      */
     const handler = args => {
       fn(args);
@@ -50,7 +45,7 @@ export default class Events {
 
   /**
    * @param {string} eventId
-   * @param {ListenerFn} fn
+   * @param {Function} fn
    */
   off = (eventId, fn) => {
     const [name, id] = this.parse(eventId);
