@@ -1,11 +1,11 @@
 {
   "name": "@railsmob/events",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Simple and well-tested events",
   "main": "lib/index.js",
   "unpkg": "dist/index.js",
   "module": "es/index.js",
-  "types": "./typings/index.d.ts",
+  "types": "./types/index.d.ts",
   "author": "Ivan Zotov <me@ivanzotov.com> (http://ivanzotov.com/)",
   "license": "MIT",
   "private": false,
@@ -25,14 +25,14 @@
     "build": "rollup -c",
     "tsc": "tsc -p .",
     "flow": "flow",
-    "flowgen": "flowgen typings/index.d.ts -o flow-typed/npm/@railsmob/events_v0.x.x.js.flow",
+    "flowgen": "flowgen types/* --add-flow-header -o flow-typed/npm/@railsmob/events_v0.x.x.js.flow",
     "debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
-    "format": "prettier --write \"{__tests__,@railsmob,src,typings}/**/*.{js,ts}\" \"./*.{js,json}\""
+    "format": "prettier --write \"{__tests__,src,types}/**/*.{js,ts}\" \"./*.{js,json}\""
   },
   "files": [
     "src",
     "dist",
-    "typings",
+    "types",
     "flow-typed"
   ],
   "dependencies": {},

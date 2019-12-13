@@ -45,7 +45,7 @@ export default class Events {
 
   /**
    * @param {string} eventId
-   * @param {Function} fn
+   * @param {Function} [fn]
    */
   off = (eventId, fn) => {
     const [name, id] = this.parse(eventId);
@@ -59,7 +59,7 @@ export default class Events {
 
   /**
    * @param {string} eventId
-   * @param {any} args
+   * @param {any} [args]
    */
   emit = (eventId, args) => {
     const [name, id] = this.parse(eventId);
