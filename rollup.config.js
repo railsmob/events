@@ -4,7 +4,7 @@ import { terser } from 'rollup-plugin-terser';
 export default [
   // CommonJS
   {
-    input: 'index.js',
+    input: '@railsmob/events.js',
     output: {
       file: 'lib/index.js',
       format: 'cjs',
@@ -14,7 +14,7 @@ export default [
   },
   // ES
   {
-    input: 'index.js',
+    input: '@railsmob/events.js',
     output: {
       file: 'es/index.js',
       format: 'es',
@@ -24,7 +24,7 @@ export default [
   },
   // UMD Dev
   {
-    input: 'index.js',
+    input: '@railsmob/events.js',
     output: {
       file: 'dist/index.js',
       format: 'umd',
@@ -39,7 +39,7 @@ export default [
   },
   // UMD Prod
   {
-    input: 'index.js',
+    input: '@railsmob/events.js',
     output: {
       file: 'dist/index.min.js',
       format: 'umd',

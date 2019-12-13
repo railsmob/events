@@ -66,7 +66,7 @@ fn: Function,...
   }
 }
 
-declare module "index" {
+declare module "@railsmob/events" {
   declare export { Events };
 
   declare var _default: Events;

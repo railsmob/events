@@ -8,5 +8,5 @@
     "declaration": true,
     "emitDeclarationOnly": true
   },
-  "files": ["./index.js", "./src/Events.js"]
+  "files": ["./@railsmob/events.js"]
 }

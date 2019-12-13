@@ -45,7 +45,7 @@ declare module 'src/Events' {
     parse: (eventId: string) => string[];
   }
 }
-declare module 'index' {
+declare module '@railsmob/events' {
   export { Events };
   var _default: Events;
   export default _default;
