@@ -1,6 +1,6 @@
 {
   "name": "@railsmob/events",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Simple and well-tested events",
   "main": "lib/index.js",
   "unpkg": "dist/index.js",

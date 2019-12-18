@@ -2,7 +2,8 @@ import Events from '../src/Events';
 
 describe('Events', () => {
   it('should has a static id method', () => {
-    expect(Events.id('hello', 'world')).toBe('hello:world');
+    const events = new Events();
+    expect(events.id('hello', 'world')).toBe('hello:world');
   });
 
   it('should has listeners as an empty object', () => {
@@ -11,11 +12,13 @@ describe('Events', () => {
   });
 
   it('should has a sepatator', () => {
-    expect(Events.SEP).toBe(':');
+    const events = new Events();
+    expect(events.SEP).toBe(':');
   });
 
   it('should has any event', () => {
-    expect(Events.ANY).toBe('any');
+    const events = new Events();
+    expect(events.ANY).toBe('any');
   });
 
   describe('.on', () => {
@@ -36,7 +39,7 @@ describe('Events', () => {
       const fn = () => {};
       events.on('focus', fn);
       expect(events.listeners).toEqual({
-        focus: [{ id: Events.ANY, fn }],
+        focus: [{ id: events.ANY, fn }],
       });
     });
   });
@@ -75,19 +78,19 @@ describe('Events', () => {
       events.listeners.blur = [
         { id: '1', fn: fn1 },
         { id: '2', fn: fn2 },
-        { id: Events.ANY, fn: fn3 },
+        { id: events.ANY, fn: fn3 },
       ];
 
       events.listeners.focus = [
         { id: '3', fn: fn1 },
         { id: '4', fn: fn2 },
-        { id: Events.ANY, fn: fn3 },
+        { id: events.ANY, fn: fn3 },
       ];
 
       events.off('focus:3');
       expect(events.listeners.focus).toEqual([
         { id: '4', fn: fn2 },
-        { id: Events.ANY, fn: fn3 },
+        { id: events.ANY, fn: fn3 },
       ]);
 
       events.off('focus');
@@ -96,7 +99,7 @@ describe('Events', () => {
       events.off('blur:2');
       expect(events.listeners.blur).toEqual([
         { id: '1', fn: fn1 },
-        { id: Events.ANY, fn: fn3 },
+        { id: events.ANY, fn: fn3 },
       ]);
 
       events.off('blur');
@@ -137,7 +140,7 @@ describe('Events', () => {
     it('should parse eventId into name and id', () => {
       const events = new Events();
       expect(events.parse('focus:1')).toEqual(['focus', '1']);
-      expect(events.parse('focus')).toEqual(['focus', Events.ANY]);
+      expect(events.parse('focus')).toEqual(['focus', events.ANY]);
     });
   });
 
@@ -157,7 +160,7 @@ describe('Events', () => {
       events.listeners.focus = [
         { id: '1', fn: fn1 },
         { id: '2', fn: fn2 },
-        { id: Events.ANY, fn: fn3 },
+        { id: events.ANY, fn: fn3 },
       ];
 
       events.emit('focus:1');
@@ -179,7 +182,7 @@ describe('Events', () => {
       events.listeners.focus = [
         { id: '1', fn: fn1 },
         { id: '2', fn: fn2 },
-        { id: Events.ANY, fn: fn3 },
+        { id: events.ANY, fn: fn3 },
       ];
 
       events.emit('focus');

@@ -1,22 +1,17 @@
 export default class Events {
-  static SEP = ':';
-  static ANY = 'any';
+  SEP = ':';
+  ANY = 'any';
 
   /**
    * @param {string} name
    * @param {string} id
    */
-  static id = (name, id) => name + Events.SEP + id;
+  id = (name, id) => name + this.SEP + id;
 
   /**
    * @type {{ [name: string]: Array<{ id: string, fn: Function }> }}
    */
   listeners = {};
-
-  // aliases
-  id = Events.id;
-  SEP = Events.SEP;
-  ANY = Events.ANY;
 
   /**
    * @param {string} eventId
@@ -53,7 +48,7 @@ export default class Events {
     this.listeners[name] = this.listeners[name].filter(listener =>
       !!fn
         ? !(listener.id === id && fn === listener.fn)
-        : !(listener.id === id || id === Events.ANY)
+        : !(listener.id === id || id === this.ANY)
     );
   };
 
@@ -65,7 +60,7 @@ export default class Events {
     const [name, id] = this.parse(eventId);
     if (this.listeners[name] === undefined) return;
     this.listeners[name].forEach(listener => {
-      if (listener.id === id || listener.id === Events.ANY || id === Events.ANY)
+      if (listener.id === id || listener.id === this.ANY || id === this.ANY)
         listener.fn(args);
     });
   };
@@ -74,7 +69,7 @@ export default class Events {
    * @param {string} eventId
    */
   parse = eventId => {
-    const [name, id = Events.ANY] = eventId.split(Events.SEP);
+    const [name, id = this.ANY] = eventId.split(this.SEP);
     return [name, id];
   };
 }
