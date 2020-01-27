@@ -6,14 +6,19 @@
  */
 
 declare export default class Events {
-  static SEP: string;
-  static ANY: string;
+  SEP: string;
+  ANY: string;
 
   /**
-   * @param {string} name
+   * @param {string} categoryOrId
    * @param {string} id
    */
-  static id: (name: string, id: string) => string;
+  id: (categoryOrId: string, id: string) => string;
+
+  /**
+   * @param {string} id
+   */
+  parse: (id: string) => string[];
 
   /**
  * @type {{
@@ -31,9 +36,6 @@ fn: Function,...
     }>,
     ...
   };
-  id: (name: string, id: string) => string;
-  SEP: string;
-  ANY: string;
 
   /**
    * @param {string} eventId
@@ -43,24 +45,19 @@ fn: Function,...
 
   /**
    * @param {string} eventId
-   * @param {Function} fn
-   */
-  once: (eventId: string, fn: Function) => void;
-
-  /**
-   * @param {string} eventId
    * @param {Function} [fn]
    */
   off: (eventId: string, fn?: Function | void) => void;
 
   /**
    * @param {string} eventId
-   * @param {any} [args]
+   * @param {Function} fn
    */
-  emit: (eventId: string, args?: any) => void;
+  once: (eventId: string, fn: Function) => void;
 
   /**
    * @param {string} eventId
+   * @param {any} [args]
    */
-  parse: (eventId: string) => string[];
+  emit: (eventId: string, args?: any) => void;
 }
