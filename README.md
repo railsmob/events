@@ -6,6 +6,71 @@
 [![coverage][codecov-badge]][codecov]
 [![PRs Welcome][prs-badge]][prs]
 
+Small events library for JavaScript
+
+```js
+import events from '@railsmob/events';
+
+let counter = 0;
+
+const increment = () => counter = counter + 1;
+const log = () => console.log('counter = ', counter);
+
+events.on('increment', increment);
+events.on('increment', log);
+
+events.emit('increment');
+// counter = 1
+
+events.emit('increment');
+// counter = 2
+
+events.off('increment', increment); // unbind specific listener
+events.off('increment'); // unbin all listeners
+```
+
+## Table of Contents
+
+* [Install](#install)
+* [Add Listener](#add-listener)
+* [Remove Listener](#remove-listener)
+* [Emit Event](#emit-event)
+* [Once](#once)
+
+## Install
+
+```sh
+yarn install @railsmob/events
+```
+
+## Add Listener
+
+```js
+const log = info => console.log('Logger: ', info);
+events.on('log', log);
+events.emit('log', 'hello world');
+// Logger: hello world
+```
+
+
+## Remove Listener
+
+```js
+events.off('log', log); // unbind specific listener
+events.off('log'); // unbin all listeners for 'log' event
+```
+
+## Emit Event
+
+```js
+events.emit('log', 123); // a second argument is optional
+```
+
+## Once
+
+```js
+events.once('log', () => console.log('Log once'));
+```
 
 ## LICENSE
 
