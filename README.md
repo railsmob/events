@@ -40,7 +40,7 @@ events.off('increment'); // unbin all listeners
 ## Install
 
 ```sh
-yarn install @railsmob/events
+yarn add @railsmob/events
 ```
 
 ## Add Listener
